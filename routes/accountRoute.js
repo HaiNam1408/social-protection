@@ -25,7 +25,7 @@ router.get(
 );
 router.post('/login', ctrl.login);
 router.get('/getAll', verifyToken, ctrl.getAll);
-router.post('/create', ctrl.create);
+router.post('/create', [verifyToken, verifyAdmin], ctrl.create);
 router.delete('/:id', [verifyToken, verifyAdmin], ctrl.delete);
 router.post('/:id', [verifyToken, verifyAdmin], ctrl.update);
 
